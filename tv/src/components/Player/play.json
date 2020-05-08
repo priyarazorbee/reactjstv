@@ -1,0 +1,47 @@
+{
+  "stat_message": "Playlist Saved: ",
+  "data": {
+    "assets":  [
+      {
+          "id":"1",
+        "filename": "1.mp4",
+        "duration": 5,
+        "selected": true,
+        "isVideo": true,
+        "fullscreen": true
+      },
+      {
+          "id":"2",
+        "filename": "1.png",
+        "duration": 5,
+        "selected": true,
+        "option": {
+          "main": false
+        },
+        "fullscreen": true
+      },
+      {
+          "id":"3",
+        "filename": "2.png",
+        "duration": 20,
+        "selected": true,
+        "option": {
+          "main": false
+        },
+        "fullscreen": true
+      },
+      {
+          "id":"4",
+        "filename": "3.jpg",
+        "duration": 20,
+        "selected": true,
+        "option": {
+          "main": false
+        },
+        "fullscreen": true
+      }
+    ]
+  
+  },
+  "success": true
+}
