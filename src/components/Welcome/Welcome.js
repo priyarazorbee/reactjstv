@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import {Redirect} from 'react-router-dom';
 
-class Welcome extends React.Component {
-      render() {
+
+class Welcome extends Component {
+
+
+  render() {
+   
+
     return (
-      <div className="off-canvas-wrapper">
-      <div className="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-     
-
-        <div className="off-canvas-content" data-off-canvas-content>
-         test
-        </div>
+      <div className="row" id="Body">
+        Welcome
+        
+      
       </div>
-    </div>
     );
   }
 }
+
 export default Welcome;

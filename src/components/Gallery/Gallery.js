@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
 
 
-
-class Gallery extends Component {
-state = {
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+class Gallery extends React.Component {
+   state = {
     assets: []
   }
   componentDidMount() {
@@ -28,8 +28,8 @@ const data = this.state.assets.data && this.state.assets.data.assets ? this.stat
         loop style={{zIndex:"-10"}} controls>
        <source src={asset.filename} type="video/mp4"/>
      </video>
-       <div class="row">
-       <div class="col-xs-2"> <img src={asset.filename} height="20%" width="40%" />
+       <div className="row">
+       <div className="col-xs-2"> <img src={asset.filename} height="20%" width="40%" />
         </div>
         </div>
   </span>
