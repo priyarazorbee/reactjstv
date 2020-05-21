@@ -10,9 +10,7 @@ class Welcome extends Component {
 
     return (
       <div className="row" id="Body">
-        Welcome
-        
-      
+        Welcome to digidarpan page   
       </div>
     );
   }

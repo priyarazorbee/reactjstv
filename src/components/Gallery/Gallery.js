@@ -1,41 +1,68 @@
-import React, {Component} from 'react';
+import React , { useState, useEffect, useReducer } from 'react';
 
 
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-class Gallery extends React.Component {
-   state = {
-    assets: []
+let asset = null;
+
+export default function Gallery() {
+  
+  const [index, setIndex] = useState(-1);
+  const [startTimtOut, setStartTimtOut] = useState(false);
+
+  const [timeoutObj, setTimeoutObj] = useState(0);
+  let timeObj = 0;
+  useEffect(() => {
+    getPlaylistData()
+
+  },[]);
+  async function getPlaylistData (dispatch) {
+
+    const response = await fetch('./play.json');
+    let json = null;
+    try{
+      json = await response.json();
+    }catch(r){
+      alert(' json file not found')
+    }
+    if (json && json.data && json.data.assets){
+      asset = json.data.assets;
+
+    }
   }
-  componentDidMount() {
-    fetch('./play.json')
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ assets: data  })
-    })
-    .catch(console.log)
+
+
+  const next=(index)=>{
+    if (timeoutObj) {clearTimeout(timeoutObj); setTimeoutObj(0)};
+    if (!asset){
+      timeObj = setTimeout(function() { next()}, 1000);
+      setTimeoutObj(timeObj)
+    }else{
+
+
+      index = (index !==undefined)? index: 0;
+      setIndex(index);
+      index = index+1;
+      if ( index== asset.length){
+        index = 0;
+      }
+      
+      timeObj = setTimeout(function() { next(index)}, 5000);
+      setTimeoutObj(timeObj)
+    }
   }
- render() {
-const data = this.state.assets.data && this.state.assets.data.assets ? this.state.assets.data.assets :[];
-     console.log(this.state);
-    return (
-       <div className="container">
-         {data.map((asset , index) => (
-            <span key={asset.id}>
-        <video
-        height="100%" width="100%"
-        autoPlay
-        loop style={{zIndex:"-10"}} controls>
-       <source src={asset.filename} type="video/mp4"/>
-     </video>
-       <div className="row">
-       <div className="col-xs-2"> <img src={asset.filename} height="20%" width="40%" />
-        </div>
-        </div>
-  </span>
-        ))}
-       </div>
-    );
+  const startTimer = ()=>{
+    if (!startTimtOut){
+      setStartTimtOut(true);
+      next();
+    }
   }
+  return (
+    <>{
+      console.log(asset)
+    }
+
+   {asset && asset[index] && (<div>{index} :::{asset[index].filename} </div>)}
+   
+   {startTimer()}
+    </>
+  );
 }
-export default Gallery;
