@@ -55,12 +55,23 @@ export default function Gallery() {
       next();
     }
   }
+  const mystyle = {
+     position: 'fixed',
+top: '0',
+left: '0',
+width: '100%',
+height: '100%',
+zIndex: '-1',
+background: '#fff',
+    };
   return (
     <>{
       console.log(asset)
     }
 
-   {asset && asset[index] && (<div>{index} :::{asset[index].filename} </div>)}
+   {asset && asset[index] && (<div>
+      
+      <img style={mystyle} src={asset[index].filename} height="20%" width="40%" /></div>)}
    
    {startTimer()}
     </>
