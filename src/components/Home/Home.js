@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Redirect} from 'react-router-dom';
 import './Home.css';
-const imgMyimageexample = require('./banner.jpg');
+
 const divStyle = {
   width: '100%',
-  height: '650px',
-  backgroundImage: `url(${imgMyimageexample})`,
+  height: '100px',
+  backgroundColor: `blue`,
   backgroundSize: 'cover'  
 };
 
@@ -15,7 +15,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.id = setTimeout(() => this.setState({ redirect: true }),9000)
+    this.id = setTimeout(() => this.setState({ redirect: true }),5000)
   }
 
   componentWillUnmount() {
@@ -25,12 +25,19 @@ class Home extends React.Component {
   render() {
     return this.state.redirect
       ? <Redirect to="/gallery" />
-      : <div className="cComponent" style={divStyle} >
-        <h1 align="center">Welcome to Digidarpan</h1>   
-        <h5 align="right">Device Id:1234567890</h5>
-        <h5 align="right">Contact us: info@digidarpan.com</h5>
+      : <div>
+        <div  style={divStyle}><h1 align="center" className="Head_1" >Welcome to Digidarpan</h1>   
+    
       </div>
+      <div className="Page">
+       <h2 align="center" className="Head_2" >Player id :0000-0000-954f-86b6</h2>  
+      <p align="center">Register your Player id at signage.digidarpan.com to manage</p>
+      <p align="center">Connectivity Ethernet :<b>UP</b> ,DNS:<b>OK</b>, PING : <b>FAIL</b>,DHCP : <b>192.168.0.1</b></p>
+      <p align="center">Server:<b>signage.digidarpan.com</b>,Status:<b>Connected</b></p>
         
+      <p align="center" className="Page_4" >For any queries please contact:+91-9900884823<br/></p>
+       </div>
+       </div>
     
   }
 }

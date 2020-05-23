@@ -3,7 +3,16 @@
     margin:10px 0px;
 
 }
-.sector{
-     float:right;
-    margin:10px 0px;
+.Page{
+    margin-top:50px;
+     margin-bottom:50px;
+}
+.Page_4{
+     padding-bottom:50px;
+}
+.Head_2{
+     margin-bottom:50px;
+}
+.Head_1{
+     padding-top:10px;
 }
